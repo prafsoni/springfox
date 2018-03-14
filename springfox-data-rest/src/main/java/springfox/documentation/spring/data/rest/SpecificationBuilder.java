@@ -116,6 +116,8 @@ abstract class SpecificationBuilder {
           break;
 
         case PAGEABLE:
+          break;
+        default: break;
       }
       return this;
     }
@@ -206,6 +208,10 @@ abstract class SpecificationBuilder {
             configuration.getSortParamName(),
             Collections.EMPTY_LIST,
             typeResolver.resolve(String.class)));
+
+          break;
+          
+        default: break;
       }
       return this;
     }
