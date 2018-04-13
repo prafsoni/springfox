@@ -638,7 +638,7 @@
         "/bugs/1767": {
             "get": {
                 "description": "This is a test method",
-                "operationId": "bug1767GET",
+                "operationId": "bug1767GET_1",
                 "parameters": [
                     {
                         "name": "description",
@@ -647,7 +647,15 @@
                         "required": true,
                         "type": "string"
                     }
-                ]
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successfully received bug 1767 or 2219 response",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                }
             }
         },
         "/bugs/1777": {
@@ -1208,14 +1216,16 @@
                         "in": "path",
                         "description": "siteId",
                         "required": true,
-                        "type": "string"
+                        "type": "string",
+                        "format": "uuid"
                     },
                     {
                         "name": "siteSecret",
                         "in": "query",
                         "description": "siteSecret",
                         "required": true,
-                        "type": "string"
+                        "type": "string",
+                        "format": "uuid"
                     },
                     {
                         "name": "stripHtmlTags",
@@ -1404,6 +1414,23 @@
                         "schema": {
                             "type": "string"
                         }
+                    }
+                }
+            }
+        },
+        "/bugs/bug1944": {
+            "get": {
+                "tags": [
+                    "Bugs"
+                ],
+                "summary": "bug1944",
+                "operationId": "bug1944UsingGET_2",
+                "responses": {
+                    "200": {
+                        "description": "The object was deleted successfully."
+                    },
+                    "404": {
+                        "description": "No object was found with the given ID"
                     }
                 }
             }
@@ -1828,6 +1855,7 @@
                 "bar": {
                     "type": "integer",
                     "format": "int32",
+                    "example": 10,
                     "description": "description of bar"
                 },
                 "enumType": {

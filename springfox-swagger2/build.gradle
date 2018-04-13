@@ -1,5 +1,5 @@
 plugins {
-  id "net.ltgt.apt" version "0.13"
+  id "net.ltgt.apt-idea" version "0.15"
 }
 
 ext {
@@ -24,6 +24,7 @@ dependencies {
   compile libs.spring
   provided libs.springProvided
   provided libs.clientProvided
+  provided libs.springBootProvided
 
   compile "org.mapstruct:mapstruct:$mapstruct"
   apt "org.mapstruct:mapstruct-processor:$mapstruct"

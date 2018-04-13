@@ -270,7 +270,7 @@ abstract class SpecificationBuilder {
       final ResolvedType methodReturnType = methodResolver.methodReturnType(handler);
 
       if (springfox.documentation.schema.Collections.isContainerType(methodReturnType)) {
-        return resolver.resolve(Resources.class, methodReturnType);
+        return resolver.resolve(Resources.class, springfox.documentation.schema.Collections.collectionElementType(methodReturnType));
       } else if (Iterable.class.isAssignableFrom(methodReturnType.getErasedType())) {
         return resolver.resolve(Resources.class, domainReturnType);
       } else if (Types.isBaseType(domainReturnType)) {
