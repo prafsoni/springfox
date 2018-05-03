@@ -33,6 +33,7 @@ import org.springframework.data.rest.webmvc.mapping.Associations;
 
 import java.net.URI;
 import java.util.Collection;
+import java.util.Optional;
 
 public class EntityContext {
   private final RepositoryRestConfiguration configuration;
@@ -71,11 +72,8 @@ public class EntityContext {
     return resource.getDomainType().getSimpleName();
   }
 
-  public PersistentEntity<?, ?> entity() {
-    Object domainType = resource.getDomainType();
-    Java8OptionalToGuavaOptionalConverter converter = new Java8OptionalToGuavaOptionalConverter();
-    Class actualDomainType = (Class) converter.convert(domainType).orNull();
-    return entities.getPersistentEntity(actualDomainType);
+  public Optional<PersistentEntity<?, ?>> entity() {
+    return entities.getPersistentEntity(resource.getDomainType());
   }
 
   public CrudMethods crudMethods() {
